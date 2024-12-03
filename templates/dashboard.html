@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .info {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+        }
+        .btn-danger:hover {
+            background-color: #a71d2a;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        .btn-secondary:hover {
+            background-color: #565e64;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <div class="info">
+            <p><strong>Sisa Saldo:</strong> Rp {{ saldo }}</p>
+            <p><strong>Saldo Pinjaman:</strong> Rp {{ pinjaman }}</p>
+            <p><strong>Status Pinjaman:</strong> {{ status }}</p>
+            {% if pinjaman > 0 %}
+            <p><strong>Jumlah Pinjaman yang Harus Dilunasi:</strong> Rp {{ pinjaman }}</p>
+            {% else %}
+            <p><strong>Pinjaman:</strong> Tidak ada pinjaman aktif</p>
+            {% endif %}
+            <p><strong>Catatan: </strong></p>
+            <p>- Setiap pinjaman akan dikenai bunga sebesar Rp. 50.000</p>
+            <p>- Seseorang tidak dapat menghapus akunnya jika masih memiliki pinjaman aktif</p>
+        </div>
+        <a href="/ambil/{{ user_id }}" class="btn">Ambil Pinjaman</a>
+        <a href="/lunasi/{{ user_id }}" class="btn">Lunasi Pinjaman</a>
+        <form action="/hapus_akun/{{ user_id }}" method="POST" style="display: inline;">
+            <button class="btn btn-danger" type="submit">Hapus Akun</button>
+        </form>        
+        <a href="/" class="btn btn-secondary">Keluar</a>
+    </div>
+</body>
+</html>
