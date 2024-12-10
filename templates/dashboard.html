@@ -18,7 +18,7 @@
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            text-align: left;
         }
         h1 {
             color: #007bff;
@@ -55,6 +55,8 @@
             background-color: #565e64;
         }
     </style>
+    <!-- <link rel="icon" href="{{url_for('static',filename='image/icon.png')}}"/> -->
+    <link rel="shortcut icon" href="../static/image/icon.png" type="image/x-icon">
 </head>
 <body>
     <div class="container">
@@ -69,8 +71,8 @@
             <p><strong>Pinjaman:</strong> Tidak ada pinjaman aktif</p>
             {% endif %}
             <p><strong>Catatan: </strong></p>
-            <p>- Setiap pinjaman akan dikenai bunga sebesar Rp. 50.000</p>
-            <p>- Seseorang tidak dapat menghapus akunnya jika masih memiliki pinjaman aktif</p>
+            <p> > Setiap pinjaman akan dikenai bunga sebesar Rp. 50.000</p>
+            <p> > Seseorang tidak dapat menghapus akunnya jika masih memiliki pinjaman aktif</p>
         </div>
         <a href="/ambil/{{ user_id }}" class="btn">Ambil Pinjaman</a>
         <a href="/lunasi/{{ user_id }}" class="btn">Lunasi Pinjaman</a>
